@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build || true",
+    "build": "next build && next-on-netlify",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@netlify/next": "^1.4.9",
     "chart.js": "^4.5.0",
     "framer-motion": "^12.23.22",
     "gsap": "^3.13.0",

@@ -67,35 +67,41 @@ export default function FounderPage() {
       </section>
 
       {/* Founder Info */}
-     <section className="pb-20 bg-white text-gray-800 px-6 md:px-12">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
-    {/* Left: Image */}
-    <div className="flex justify-center md:justify-start">
-      <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96">
-        <Image
-          src="/images/founder.png"
-          alt="Founder"
-          fill
-          className="rounded-full shadow-2xl object-cover hover:scale-105 transition-transform duration-500"
-        />
-      </div>
-    </div>
-
-    {/* Right: Text */}
-    <div>
-      <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-4">
-        The Journey of Dedication
-      </h2>
-      <p className="text-lg leading-relaxed mb-4">
-        With over a decade of experience...
-      </p>
-      <p className="font-semibold text-indigo-700 italic">
-        “Education is not the filling of a pail, but the lighting of a fire.”
-      </p>
-    </div>
-  </div>
-</section>
-
+      <section
+        ref={infoRef}
+        className="pb-20 bg-white text-gray-800 px-6 md:px-12 text-center md:text-left -mt-16"
+      >
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-4 items-center">
+          <div>
+            <Image
+              src="/images/founder.png"
+              alt="Founder"
+              width={400}
+              height={400}
+              className="rounded-full shadow-2xl object-cover mx-auto hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-4">
+              The Journey of Dedication
+            </h2>
+            <p className="text-lg leading-relaxed mb-4">
+              With over a decade of experience in teaching and mentoring, Mr.
+              Laliteshwar Kumar founded LKD Classes with a mission to bridge the
+              gap between potential and performance.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              His passion for education, innovative methods, and personal
+              attention to every student have made LKD Classes a trusted name in
+              Saran and beyond.
+            </p>
+            <p className="font-semibold text-indigo-700 italic">
+              “Education is not the filling of a pail, but the lighting of a
+              fire.”
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Achievements & Stats */}
       <section

@@ -1,15 +1,22 @@
-"use client";
-
+// app/layout.tsx
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Navbar from "../components/Navbar";
 import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 
+
+export const metadata = {
+  title: "LKD Classes | Learn with Excellence",
+  description: "LKD Classes — inspiring education for every student.",
+  icons: {
+    icon: "/logo.png", 
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-const hideNavbar = pathname.startsWith("/student-portal") || pathname.startsWith("/admin");
-
+  const hideNavbar = pathname.startsWith("/student-portal") || pathname.startsWith("/admin");
 
   return (
     <html lang="en">

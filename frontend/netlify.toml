@@ -1,6 +1,6 @@
 [build]
   base = "frontend"
-  command = "npm run build"
+  command = "build": "next build && next export"
   publish = "frontend/out"
 
 [[redirects]]

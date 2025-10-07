@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
@@ -9,13 +9,22 @@ import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [showEnroll, setShowEnroll] = useState(false);
+  const [user, setUser] = useState<any>(null); // ✅ login state
   const menuRef = useRef<HTMLDivElement>(null);
   const enrollRef = useRef<HTMLAnchorElement>(null);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
+  // ✅ Check login on load (can modify for JWT or cookie)
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+  }, []);
+
+  // Close menu on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -26,6 +35,7 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Enroll button visibility
   useEffect(() => {
     if (pathname === "/") {
       const handleScroll = () => {
@@ -49,6 +59,15 @@ export default function Navbar() {
     }
   }, [showEnroll]);
 
+  // ✅ handle Student Portal click
+  const handlePortalClick = () => {
+    if (user) {
+      router.push("/student-portal");
+    } else {
+      router.push("/login");
+    }
+  };
+
   const links = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
@@ -58,10 +77,10 @@ export default function Navbar() {
     { name: "Gallery", href: "/gallery" },
   ];
 
-  // Render nothing on Admin / Student portal
   if (pathname.startsWith("/admin") || pathname.startsWith("/student-portal")) {
-    return <></>; // ✅ Render empty div instead of early return
+    return null;
   }
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-md transition-all">
       <div
@@ -85,12 +104,13 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link
-            href="/student-portal"
-            className="text-gray-700 font-medium hover:text-indigo-600 transition"
+          {/* ✅ Student Portal Button */}
+          <button
+            onClick={handlePortalClick}
+            className="text-gray-700 font-medium hover:text-indigo-600 transition cursor-pointer"
           >
             Student Portal
-          </Link>
+          </button>
 
           {showEnroll && (
             <Link
@@ -155,13 +175,16 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Link
-              href="/student-portal"
-              className="text-gray-700 font-medium hover:text-indigo-600 transition"
-              onClick={() => setIsOpen(false)}
+            {/* ✅ Student Portal mobile */}
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                handlePortalClick();
+              }}
+              className="text-gray-700 font-medium hover:text-indigo-600 transition text-left"
             >
               Student Portal
-            </Link>
+            </button>
 
             {showEnroll && (
               <Link

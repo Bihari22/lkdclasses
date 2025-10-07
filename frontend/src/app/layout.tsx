@@ -5,7 +5,7 @@ import PageTransition from "../components/PageTransition";
 
 export const metadata = {
   title: "LKD Classes | Learn with Excellence",
-  description: "LKD Classes — inspiring education for every student.",
+  description: "LKD Classes, Sitalpur — Providing top-quality coaching for 6th to 12th grade students in Saran, Bihar. Personalized mentorship, structured learning, and proven methods to achieve academic excellence and top ranks.",
   icons: { icon: "/logo.png" },
 };
 

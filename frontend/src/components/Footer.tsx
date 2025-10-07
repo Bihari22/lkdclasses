@@ -26,16 +26,16 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <p className="text-base">Phone: +918002271522</p>
             <p className="text-base">Email: lkdclasses@gmail.com</p>
-            <p className="text-base">Address:Parsa Roard , Sitalpur, Saran, Bihar</p>
+            <p className="text-base">Address:Parsa Roard, Sitalpur, Saran, Bihar</p>
           </div>
         </div>
 
         {/* Mobile Footer - only Contact */}
         <div className="md:hidden text-center">
           <h3 className="text-lg font-bold mb-2">Contact Us</h3>
-          <p className="text-sm">Phone: +91 12345 67890</p>
-          <p className="text-sm">Email: info@lkdclasses.com</p>
-          <p className="text-sm">Address: Sitalpur, Saran, Bihar</p>
+          <p className="text-sm">Phone: +918002271522</p>
+          <p className="text-sm">Email: lkdclasses@gmail.com</p>
+          <p className="text-sm">Address: Parsa Road, Sitalpur, Saran, Bihar</p>
         </div>
 
         {/* Copyright */}
